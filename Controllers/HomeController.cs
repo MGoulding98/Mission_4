@@ -45,7 +45,9 @@ namespace Mission_4.Controllers
 
         public IActionResult MovieList()
         {
-            return View();
+            var movies = _MovieContext.Movies.ToList();
+
+            return View(movies);
         }
     }
 }
