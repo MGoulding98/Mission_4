@@ -42,5 +42,10 @@ namespace Mission_4.Controllers
 
             return View("Confirmation");
         }
+
+        public IActionResult MovieList()
+        {
+            return View();
+        }
     }
 }
