@@ -11,12 +11,10 @@ namespace Mission_4.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private MovieApplicationContext _MovieContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger, MovieApplicationContext x)
+        public HomeController(MovieApplicationContext x)
         {
-            _logger = logger;
             _MovieContext = x;
         }
 
@@ -43,17 +41,6 @@ namespace Mission_4.Controllers
             _MovieContext.SaveChanges();
 
             return View("Confirmation");
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
