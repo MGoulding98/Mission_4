@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission_4.Models;
 using System;
@@ -46,7 +47,9 @@ namespace Mission_4.Controllers
 
         public IActionResult MovieList()
         {
-            var movies = maContext.Movies.ToList();
+            var movies = maContext.Movies
+                .Include(x => x.Category)
+                .ToList();
 
             return View(movies);
         }
