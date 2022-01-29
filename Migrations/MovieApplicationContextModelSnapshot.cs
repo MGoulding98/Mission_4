@@ -26,10 +26,52 @@ namespace Mission_4.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Drama"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Family"
+                        },
+                        new
+                        {
+                            CategoryID = 5,
+                            CategoryName = "Horror/Suspense"
+                        },
+                        new
+                        {
+                            CategoryID = 6,
+                            CategoryName = "Miscellaneous"
+                        },
+                        new
+                        {
+                            CategoryID = 7,
+                            CategoryName = "Television"
+                        },
+                        new
+                        {
+                            CategoryID = 8,
+                            CategoryName = "VHS"
+                        });
                 });
 
-            modelBuilder.Entity("Mission_4.Models.MovieModel", b =>
+            modelBuilder.Entity("Mission_4.Models.Movie", b =>
                 {
                     b.Property<int>("MovieID")
                         .ValueGeneratedOnAdd()
@@ -73,7 +115,7 @@ namespace Mission_4.Migrations
                         new
                         {
                             MovieID = 1,
-                            CategoryID = 1,
+                            CategoryID = 2,
                             Director = "Danny Boyle",
                             Edited = false,
                             LentTo = "Matt Goulding",
@@ -85,7 +127,7 @@ namespace Mission_4.Migrations
                         new
                         {
                             MovieID = 2,
-                            CategoryID = 2,
+                            CategoryID = 5,
                             Director = "Kiyoshi Kurosawa",
                             Edited = false,
                             LentTo = "Matt Goulding",
@@ -97,7 +139,7 @@ namespace Mission_4.Migrations
                         new
                         {
                             MovieID = 3,
-                            CategoryID = 3,
+                            CategoryID = 2,
                             Director = "Éric Rohmer",
                             Edited = false,
                             LentTo = "Matt Goulding",
@@ -108,7 +150,7 @@ namespace Mission_4.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Mission_4.Models.MovieModel", b =>
+            modelBuilder.Entity("Mission_4.Models.Movie", b =>
                 {
                     b.HasOne("Mission_4.Models.Category", "Category")
                         .WithMany()

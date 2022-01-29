@@ -14,16 +14,29 @@ namespace Mission_4.Models
 
         }
 
-        public DbSet<MovieModel> Movies { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            mb.Entity<MovieModel>().HasData(
+            mb.Entity<Category>().HasData(
+                new Category { CategoryID = 1, CategoryName = "Action/Adventure" },
+                new Category { CategoryID = 2, CategoryName = "Comedy" },
+                new Category { CategoryID = 3, CategoryName = "Drama" },
+                new Category { CategoryID = 4, CategoryName = "Family" },
+                new Category { CategoryID = 5, CategoryName = "Horror/Suspense" },
+                new Category { CategoryID = 6, CategoryName = "Miscellaneous" },
+                new Category { CategoryID = 7, CategoryName = "Television" },
+                new Category { CategoryID = 8, CategoryName = "VHS" }
 
-               new MovieModel
+            );
+
+            mb.Entity<Movie>().HasData(
+
+               new Movie
                {
                    MovieID = 1,
-                   CategoryID = 1,
+                   CategoryID = 2,
                    Title = "Trainspotting",
                    Year = 1996,
                    Director = "Danny Boyle",
@@ -33,10 +46,10 @@ namespace Mission_4.Models
                    Notes = "Best movie ever!"
                },
 
-               new MovieModel
+               new Movie
                {
                    MovieID = 2,
-                   CategoryID = 2,
+                   CategoryID = 5,
                    Title = "Cure",
                    Year = 1997,
                    Director = "Kiyoshi Kurosawa",
@@ -46,10 +59,10 @@ namespace Mission_4.Models
                    Notes = "This one melts your brain."
                },
 
-               new MovieModel
+               new Movie
                {
                    MovieID = 3,
-                   CategoryID = 3,
+                   CategoryID = 2,
                    Title = "A Summer's Tale",
                    Year = 1996,
                    Director = "Éric Rohmer",

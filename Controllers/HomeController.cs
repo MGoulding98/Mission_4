@@ -35,7 +35,7 @@ namespace Mission_4.Controllers
         }
 
         [HttpPost]
-        public IActionResult MovieForm(MovieModel m)
+        public IActionResult MovieForm(Movie m)
         {
             _MovieContext.Add(m);
             _MovieContext.SaveChanges();

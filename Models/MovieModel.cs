@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mission_4.Models
 {
-    public class MovieModel
+    public class Movie
     {
         [Key]
         [Required]
