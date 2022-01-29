@@ -13,9 +13,6 @@ namespace Mission_4.Models
         public int MovieID { get; set; }
 
         [Required]
-        public string Category { get; set; }
-
-        [Required]
         public string Title { get; set; }
 
         [Required]
@@ -33,6 +30,11 @@ namespace Mission_4.Models
         
         [StringLength(25, MinimumLength=0,ErrorMessage="Max 25 characters")]
         public string Notes { get; set; }
+
+        // Build foreign key relationship
+        [Required]
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
 
     }
 }

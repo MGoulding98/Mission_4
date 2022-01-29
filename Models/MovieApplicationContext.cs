@@ -23,7 +23,7 @@ namespace Mission_4.Models
                new MovieModel
                {
                    MovieID = 1,
-                   Category = "Dark Comedy",
+                   CategoryID = 1,
                    Title = "Trainspotting",
                    Year = 1996,
                    Director = "Danny Boyle",
@@ -36,7 +36,7 @@ namespace Mission_4.Models
                new MovieModel
                {
                    MovieID = 2,
-                   Category = "Thriller",
+                   CategoryID = 2,
                    Title = "Cure",
                    Year = 1997,
                    Director = "Kiyoshi Kurosawa",
@@ -49,7 +49,7 @@ namespace Mission_4.Models
                new MovieModel
                {
                    MovieID = 3,
-                   Category = "Romantic Comedy",
+                   CategoryID = 3,
                    Title = "A Summer's Tale",
                    Year = 1996,
                    Director = "Éric Rohmer",

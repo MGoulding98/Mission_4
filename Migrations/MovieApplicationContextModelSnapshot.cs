@@ -15,15 +15,28 @@ namespace Mission_4.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
 
+            modelBuilder.Entity("Mission_4.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Category");
+                });
+
             modelBuilder.Entity("Mission_4.Models.MovieModel", b =>
                 {
                     b.Property<int>("MovieID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -52,13 +65,15 @@ namespace Mission_4.Migrations
 
                     b.HasKey("MovieID");
 
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("Movies");
 
                     b.HasData(
                         new
                         {
                             MovieID = 1,
-                            Category = "Dark Comedy",
+                            CategoryID = 1,
                             Director = "Danny Boyle",
                             Edited = false,
                             LentTo = "Matt Goulding",
@@ -70,7 +85,7 @@ namespace Mission_4.Migrations
                         new
                         {
                             MovieID = 2,
-                            Category = "Thriller",
+                            CategoryID = 2,
                             Director = "Kiyoshi Kurosawa",
                             Edited = false,
                             LentTo = "Matt Goulding",
@@ -82,7 +97,7 @@ namespace Mission_4.Migrations
                         new
                         {
                             MovieID = 3,
-                            Category = "Romantic Comedy",
+                            CategoryID = 3,
                             Director = "Éric Rohmer",
                             Edited = false,
                             LentTo = "Matt Goulding",
@@ -91,6 +106,15 @@ namespace Mission_4.Migrations
                             Title = "A Summer's Tale",
                             Year = 1996
                         });
+                });
+
+            modelBuilder.Entity("Mission_4.Models.MovieModel", b =>
+                {
+                    b.HasOne("Mission_4.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
