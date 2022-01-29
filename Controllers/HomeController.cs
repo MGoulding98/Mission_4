@@ -11,11 +11,11 @@ namespace Mission_4.Controllers
 {
     public class HomeController : Controller
     {
-        private MovieApplicationContext _MovieContext { get; set; }
+        private MovieApplicationContext maContext { get; set; }
 
         public HomeController(MovieApplicationContext x)
         {
-            _MovieContext = x;
+            maContext = x;
         }
 
         public IActionResult Index()
@@ -31,21 +31,22 @@ namespace Mission_4.Controllers
         [HttpGet]
         public IActionResult MovieForm()
         {
+            ViewBag.Categories = maContext.Categories.ToList();
             return View();
         }
 
         [HttpPost]
         public IActionResult MovieForm(Movie m)
         {
-            _MovieContext.Add(m);
-            _MovieContext.SaveChanges();
+            maContext.Add(m);
+            maContext.SaveChanges();
 
             return View("Confirmation");
         }
 
         public IActionResult MovieList()
         {
-            var movies = _MovieContext.Movies.ToList();
+            var movies = maContext.Movies.ToList();
 
             return View(movies);
         }
