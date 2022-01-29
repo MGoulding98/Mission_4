@@ -2,6 +2,8 @@
     ViewData["Title"] = "Movie List";
 }
 
+@model List<MovieModel>
+
 @*Change the classes maybe*@ 
 <table class="table table-bordered">
     <thead>
@@ -16,4 +18,20 @@
             <td>Notes</td>
         </tr>
     </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+            {
+        <tr>
+            <td>@x.Category</td>
+            <td>@x.Title</td>
+            <td>@x.Year</td>
+            <td>@x.Director</td>
+            <td>@x.Rating</td>
+            <td>@x.Edited</td>
+            <td>@x.LentTo</td>
+            <td>@x.Notes</td>
+        </tr>
+            }
+    </tbody>
 </table>
