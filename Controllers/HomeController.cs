@@ -53,5 +53,15 @@ namespace Mission_4.Controllers
 
             return View(movies);
         }
+
+        public IActionResult Edit ()
+        {
+            return View();
+        }
+
+        public IActionResult Delete ()
+        {
+            return View();
+        }
     }
 }
