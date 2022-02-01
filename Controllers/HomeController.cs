@@ -54,9 +54,12 @@ namespace Mission_4.Controllers
             return View(movies);
         }
 
-        public IActionResult Edit ()
+        public IActionResult Edit (int movieid)
         {
-            return View();
+            ViewBag.Categories = maContext.Categories.ToList();
+
+            var movie = maContext.Movies.Single(x => x.MovieID == movieid);
+            return View("MovieForm");
         }
 
         public IActionResult Delete ()
