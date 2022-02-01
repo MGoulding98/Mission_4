@@ -59,7 +59,7 @@ namespace Mission_4.Controllers
             ViewBag.Categories = maContext.Categories.ToList();
 
             var movie = maContext.Movies.Single(x => x.MovieID == movieid);
-            return View("MovieForm");
+            return View("MovieForm", movie);
         }
 
         public IActionResult Delete ()
