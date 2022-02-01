@@ -54,6 +54,7 @@ namespace Mission_4.Controllers
             return View(movies);
         }
 
+        [HttpGet]
         public IActionResult Edit (int movieid)
         {
             ViewBag.Categories = maContext.Categories.ToList();
@@ -62,7 +63,16 @@ namespace Mission_4.Controllers
             return View("MovieForm", movie);
         }
 
-        public IActionResult Delete ()
+        [HttpPost]
+        public IActionResult Edit (Movie m)
+        {
+            maContext.Update(m);
+            maContext.SaveChanges();
+
+            return RedirectToAction("MovieList");
+        }
+
+            public IActionResult Delete ()
         {
             return View();
         }
