@@ -81,9 +81,20 @@ namespace Mission_4.Controllers
             return RedirectToAction("MovieList");
         }
 
-            public IActionResult Delete ()
+        [HttpGet]
+        public IActionResult Delete (int movieid)
         {
-            return View();
+            var movie = maContext.Movies.Single(x => x.MovieID == movieid);
+            return View(movie);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Movie m)
+        {
+            maContext.Movies.Remove(m);
+            maContext.SaveChanges();
+
+            return RedirectToAction("MovieList");
         }
     }
 }
