@@ -39,10 +39,19 @@ namespace Mission_4.Controllers
         [HttpPost]
         public IActionResult MovieForm(Movie m)
         {
-            maContext.Add(m);
-            maContext.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                maContext.Add(m);
+                maContext.SaveChanges();
 
-            return View("Confirmation");
+                return View("Confirmation");
+            }
+            else
+            {
+                ViewBag.Categories = maContext.Categories.ToList();
+                return View(m);
+            }
+      
         }
 
         public IActionResult MovieList()
